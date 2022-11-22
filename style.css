@@ -29,6 +29,7 @@ body {
     /* margin: var(--spacing-regular); */
     margin: auto;
     /* justify-self: center; */
+    background: white;
 }
 
 /* mobile first approach */
@@ -51,6 +52,7 @@ body {
     "feelslike humidity";    
     gap: var(--spacing-regular);
     background-image: url("sky.jpg");
+    /* background: #39a0ca; */
     box-shadow: 0 0 10px;
 }
 
@@ -169,6 +171,8 @@ body {
         "hourly hourly fiveday fiveday"
         "feelslike humidity fiveday fiveday";  
         background-image: url("sky.jpg");
+    /* background: skyblue; */
+
         box-shadow: 0 0 10px;  
     }
 }

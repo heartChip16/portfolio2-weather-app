@@ -14,9 +14,9 @@
     --font-semibold: 600;
 }
 
-h1, h2 {
+/* p {
     margin: 0;
-}
+} */
 
 p {
     margin: var(--spacing-medium);
@@ -29,37 +29,51 @@ body {
     /* margin: var(--spacing-regular); */
     margin: auto;
     /* justify-self: center; */
-    background: white;
+    background: rgb(210, 237, 240);
 }
 
 /* mobile first approach */
 #search {
     /* width: 100%; */
     grid-area: search;
-    border-radius: var(--spacing-medium);
+    border-radius: 5px;
+    border:transparent;
+    background-color: rgb(255, 228, 178);
     padding: 5px;
-    font-size: var(--font-large);
+    font-size: var(--font-regular);
     opacity: 50%;
+    padding:5px;
+}
+
+#search:focus {
+    border-color: orange;
 }
 .container {
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-template-areas: 
     "search search"
-    "current current"
+    "current current"   
     "hourly hourly"
     "fiveday fiveday"
     "feelslike humidity";    
     gap: var(--spacing-regular);
-    background-image: url("sky.jpg");
+    /* background-image: url("sky.jpg"); */
     /* background: #39a0ca; */
-    box-shadow: 0 0 10px;
+    /* box-shadow: 0 0 10px; */
+    margin: 40px;
+}
+
+.container {
+border-radius: 10px;
+background: white;
 }
 
 .container, .container>article {
     /* border: 1px solid;  */
-    box-shadow: 0 0 5px;
-    border-radius: var(--spacing-regular);
+    /* box-shadow: 0 0 5px; */
+    /* border-radius: var(--spacing-regular); */
+    /* border-radius: 5px; */
     padding: var(--spacing-regular);
     text-align: center;
 }
@@ -170,11 +184,26 @@ body {
         "current current current current"
         "hourly hourly fiveday fiveday"
         "feelslike humidity fiveday fiveday";  
-        background-image: url("sky.jpg");
+        /* background-image: url("sky.jpg"); */
     /* background: skyblue; */
 
-        box-shadow: 0 0 10px;  
+        /* box-shadow: 0 0 10px;   */
     }
 }
 
+.day, .time {
+    color: gray;
+}
 
+p {
+color: rgb(60, 60, 60);
+}
+
+.city {
+    font-size: xx-large;
+    color: black;
+}
+
+.min-temp, .max-temp, .hourly-temp, .feels-like-temp {
+    color:  rgba(255, 128, 0, 0.702);
+}

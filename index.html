@@ -4,44 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="upgrade-insecure-requests"
-    />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main class="container">
-      <input
-        list="cities"
-        type="search"
-        name="search"
-        id="search"
-        placeholder="Search city"
-        autocomplete="off"
-      />
+      <input list="cities" type="search" name="search" id="search" placeholder="Search city" autocomplete="off" />
       <datalist id="cities"> </datalist>
       <article id="current-forecast">
-        <h1 class="city">City name</h1>
+        <p class="city">City name</p>
         <p class="temp">--</p>
         <p class="description">Description</p>
         <p class="min-max-temp">High Low</p>
       </article>
       <article id="hourly-forecast">
-        <h1>Hourly Forecast</h1>
+        <p>Hourly Forecast</p>
         <section class="hourly-container"></section>
       </article>
       <article id="five-day-forecast">
-        <h1>5-Day Forecast</h1>
+        <p>5-Day Forecast</p>
         <section class="five-day-forecast-container"></section>
       </article>
       <article id="feels-like">
-        <h1>Feels Like</h1>
+        <p>Feels Like</p>
         <p class="feels-like-temp">--</p>
       </article>
       <article id="humidity">
-        <h1>Humidity</h1>
+        <p>Humidity</p>
         <p class="humidity-value">--</p>
       </article>
     </main>

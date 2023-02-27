@@ -36,7 +36,7 @@ const loadCurrentForecast = ({ name, main: { temp, temp_max, temp_min }, weather
 
 }
 
-const loadHourlyForecast = ({ main: { temp: tempNow }, weather: [{ icon: iconNow }] }, hourlyForecast) => {
+const loadHourlyForecast = ({ main: { temp: tempNow }, weather: [{ icon: iconNow, description: descriptionNow }] }, hourlyForecast) => {
 
     const timeFormatter = Intl.DateTimeFormat("en", {
         hour12: true,
@@ -46,8 +46,8 @@ const loadHourlyForecast = ({ main: { temp: tempNow }, weather: [{ icon: iconNow
 
     const hourlyContainer = document.querySelector(".hourly-container");
     let innerHTMLString = `<article>
-    <p class="time">Now</p>
-   <img class="icon" src="${createIconURL(iconNow)}"/>    
+    <p class="time" >Now</p>
+   <img class="icon" title='${descriptionNow}' src="${createIconURL(iconNow)}"/>    
     <p class="hourly-temp">${formatTemperature(tempNow)}</p>
 </article>`;
 
@@ -151,7 +151,7 @@ const loadForecastUsingGeolocation = () => {
 
 const loadData = async () => {
     const currentWeather = await getCurrentWeatherData(selectedCity);
-    console.log(currentWeather);
+    console.log("currentWeather: ", currentWeather);
     loadCurrentForecast(currentWeather);
     const hourlyForecast = await getHourlyForecast(currentWeather);
     console.log(hourlyForecast);

@@ -51,12 +51,13 @@ const loadHourlyForecast = ({ main: { temp: tempNow }, weather: [{ icon: iconNow
     <p class="hourly-temp">${formatTemperature(tempNow)}</p>
 </article>`;
 
-    for (let { temp, icon, dt_txt } of dataFor12Hours) {
+    for (let { temp, icon, dt_txt, description } of dataFor12Hours) {
         innerHTMLString += `<article>
                      <p class="time">${timeFormatter.format(new Date(dt_txt))}</p>
-                    <img class="icon" src="${createIconURL(icon)}"/>    
+                    <img class="icon" title='${description}' src="${createIconURL(icon)}"/>    
                      <p class="hourly-temp">${formatTemperature(temp)}</p>
                 </article>`;
+        console.log(description);
     }
     hourlyContainer.innerHTML = innerHTMLString;
 
@@ -81,10 +82,11 @@ const calculateDayWiseForecast = (hourlyForecast) => {
     }
     console.log("dayWiseForecast: ", dayWiseForecast);
     for (let [key, value] of dayWiseForecast) {
+        console.log("value: ", value);
         console.log("value.find(v=>v.icon).icon: ", value.find(v => v.icon).icon);
         let temp_min = Math.min(...Array.from(value, val => val.temp_min));
         let temp_max = Math.max(...Array.from(value, val => val.temp_max));
-        dayWiseForecast.set(key, { temp_min, temp_max, icon: value.find(v => v.icon).icon });
+        dayWiseForecast.set(key, { temp_min, temp_max, icon: value.find(v => v.icon).icon, description: value.find(v => v.description).description });
         console.log("dayWiseForecast: ", dayWiseForecast);
     }
     return dayWiseForecast;
@@ -109,12 +111,12 @@ const loadFiveDayForecast = ({ main: { temp: tempNow }, weather: [{ icon: iconNo
 
     // Another implementation: 
     let dayWiseInfo = "";
-    Array.from(dayWiseForecast).map(([day, { temp_max, temp_min, icon }], index) => {
+    Array.from(dayWiseForecast).map(([day, { temp_max, temp_min, icon, description }], index) => {
         if (index < 5) {
             dayWiseInfo +=
                 `<article class="day-wise-forecast">
             <p class="day">${index === 0 ? "Today" : day}</p>  
-            <img class="icon" src="${createIconURL(icon)}" alt="icon for the forecast" />
+            <img class="icon" title='${description}' src="${createIconURL(icon)}" alt="icon for the forecast" />
             <p class="min-temp">${formatTemperature(temp_min)}</p>
             <p class="max-temp">${formatTemperature(temp_max)}</p>
           </article>`;
